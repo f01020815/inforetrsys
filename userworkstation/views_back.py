@@ -56,7 +56,7 @@ def feedback(request):
             return render(request, 'feedback.html', {'results': results})
         return render(request, 'feedback.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "feedback"})
 
 # 普通用户单条数据插入
 def insert(request):
@@ -110,7 +110,7 @@ def insert(request):
                     messages.success(request, "新增条目成功!文档上传成功！")
         return render(request, 'insert.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "insert"})
 
 # add by wangshibin 20190718
 def index(request):
@@ -118,7 +118,7 @@ def index(request):
     if is_login:
         return render(request, 'index.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "index"})
 
 
 # 查询结果展示
@@ -145,7 +145,7 @@ def show(request):
             normal_show(request, '查询', inputs, count)
         return render(request, 'show.html', {'shows': datas, 'count': count, 'get_names_words':  json.dumps(key_words, ensure_ascii=False)})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "show"})
 
 # add by wangshibin 20190722
 @csrf_exempt
@@ -264,7 +264,7 @@ def update(request):
                 return redirect(new_address)
         return render(request, 'update.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "update"})
 
 # # 删除文件动作 数据文件夹里保留，只删除数据库  del by wangshibin 20190929
 # def delete_file(request):
@@ -308,7 +308,7 @@ def rollback(request):
             approval_list_update = ''
         return render(request, 'rollback.html', {'approval_list_add_del': approval_list_add_del, 'approval_list_update': approval_list_update})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "rollback"})
 
 
 def login(request):
@@ -368,9 +368,9 @@ def register(request):
                 results['result'] = 'OK'
             return render(request, 'register.html', results)
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "register"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "register"})
 
 def document_show(request):
     context = {}

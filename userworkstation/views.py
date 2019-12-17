@@ -56,7 +56,7 @@ def feedback(request):
             return render(request, 'feedback.html', {'results': results})
         return render(request, 'feedback.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "feedback"})
 
 # 普通用户单条数据插入
 def insert(request):
@@ -110,7 +110,7 @@ def insert(request):
                     messages.success(request, "新增条目成功!文档上传成功！")
         return render(request, 'insert.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "insert"})
 
 # add by wangshibin 20190718
 def index(request):
@@ -264,7 +264,7 @@ def update(request):
                 return redirect(new_address)
         return render(request, 'update.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "update"})
 
 # # 删除文件动作 数据文件夹里保留，只删除数据库  del by wangshibin 20190929
 # def delete_file(request):
@@ -308,7 +308,7 @@ def rollback(request):
             approval_list_update = ''
         return render(request, 'rollback.html', {'approval_list_add_del': approval_list_add_del, 'approval_list_update': approval_list_update})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "rollback"})
 
 
 def login(request):
@@ -317,6 +317,10 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
+        page = request.POST.get('page')
+        if len(page) == 0 or page.isspace():
+            page="login"
+        page="/"+page+"/"
         password = pwd_encrypt(password)
         name = ''
         pwd = ''
@@ -339,14 +343,14 @@ def login(request):
                         request.session['is_login'] = True
                         request.session['user_name'] = username
                         ret['status'] = 'login success'
-                        return redirect('/index/')
+                        return redirect(page)
                     else:
                         ret['status'] = 'password is error'
                 else:
                     ret['status'] = 'account is error'
             else:
                 ret['status'] = 'account or password is not empty'
-    return render(request, 'login.html', ret)
+    return render(request, "login.html", ret)
 
 def register(request):
     is_login = request.session.get('is_login', None)
@@ -368,9 +372,9 @@ def register(request):
                 results['result'] = 'OK'
             return render(request, 'register.html', results)
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "register"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "register"})
 
 def document_show(request):
     context = {}

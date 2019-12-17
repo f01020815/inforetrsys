@@ -53,53 +53,61 @@
 </head>
 
 <body>
+
 <div class="ch-container">
+
+{#    {% if shows == 'null' %}#}
+{#        <p>查询无结果</p>#}
+{#    {% else %}#}
     <div class="row">
 
-    <div class="row">
-        <div class="col-md-12 center login-header">
-            <h2>Welcome to InfoRetrSys</h2>
-        </div>
-        <!--/span-->
-    </div><!--/row-->
-
-    <div class="row">
-        <div class="well col-md-5 center login-box">
-            <div class="alert alert-info">
-                请输入你的用户名和密码.
+        <div class="row">
+            <div class="col-md-12 center login-header">
+                <h2>Welcome to InfoRetrSys</h2>
             </div>
-            <form class="form-horizontal" action="/login/" method="POST">
-                {% csrf_token %}
-                <p style="color:#FF0000">{{ status }}</p>
-                <fieldset>
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-                        <input name="username" type="text" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="clearfix"></div><br>
+            <!--/span-->
+        </div><!--/row-->
 
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
-                        <input name="password" type="password" class="form-control" placeholder="Password">
-                    </div>
-                    <div class="clearfix"></div>
+        <div class="row">
+            <div class="well col-md-5 center login-box">
+                <div class="alert alert-info">
+                    请输入你的用户名和密码.
+                </div>
+                <form class="form-horizontal" action="/login/" method="POST">
+                     <input type="hidden" name="page" value="{{ page }}">
+                    {% csrf_token %}
+                    <p style="color:#FF0000">{{ status }}</p>
+                    <fieldset>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                            <input name="username" type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
 
-                    <div class="input-prepend">
-                        <label class="remember" for="remember"><input type="checkbox" id="remember"> Remember me</label>
-                    </div>
-                    <div class="clearfix"></div>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                            <input name="password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="clearfix"></div>
 
-                    <p class="center col-md-5">
-{#                        <button type="submit" class="btn btn-primary">Login</button>#}
-                        <input type="submit" class="btn btn-primary" value="Login">
-                    </p>
-                </fieldset>
-            </form>
-            <a href="/register_user" class="remember">注册</a>
-        </div>
-        <!--/span-->
-    </div><!--/row-->
-</div><!--/fluid-row-->
+                        <div class="input-prepend">
+                            <label class="remember" for="remember"><input type="checkbox" id="remember"> Remember
+                                me</label>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <p class="center col-md-5">
+                            {#                        <button type="submit" class="btn btn-primary">Login</button>#}
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </p>
+                    </fieldset>
+                </form>
+                <a href="/register_user" class="remember">注册</a>
+            </div>
+            <!--/span-->
+        </div><!--/row-->
+    </div><!--/fluid-row-->
 
 </div><!--/.fluid-container-->
 
@@ -141,3 +149,35 @@
 
 </body>
 </html>
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="/static/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='/static/bower_components/moment/min/moment.min.js'></script>
+<script src='/static/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='/static/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="/static/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="/static/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="/static/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="/static/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="/static/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="/static/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="/static/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="/static/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="/static/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="/static/js/charisma.js"></script>

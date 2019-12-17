@@ -64,9 +64,9 @@ def admingo(request):
                 return render(request, 'admingo.html', {'count': count, 'code': result['code']})
             return render(request, 'admingo.html')
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "admingo"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "admingo"})
 
 # 意见反馈展示
 def feedback_show(request):
@@ -85,9 +85,9 @@ def feedback_show(request):
                 feedback_lists.append(feedback_list)
                 result['feedback_list'] = feedback_lists
             return render(request, 'feedback_show.html', result)
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "feedback_show"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "feedback_show"})
 
 # 意见反馈一键导出
 def export_excel(request):
@@ -169,9 +169,9 @@ def approval(request):
                 approval_list_update = ''
             return render(request, 'approval.html', {'approval_list_add_del': approval_list_add_del, 'approval_list_update': approval_list_update})
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "approval"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "approval"})
 
 # 审批同意 # add by wangshibin 20190723
 @csrf_exempt
@@ -273,9 +273,9 @@ def log_show(request):
             data = data1 + data2
             return render(request, 'log_show.html', {'log_data': data})
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "log_show"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "log_show"})
 
 
 # 按日期获取日志内容
@@ -440,9 +440,9 @@ def maintenance(request):
         if is_user in user_admin_list():
             return render(request, 'maintenance.html')
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "maintenance"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "maintenance"})
 
 def user_management(request):
     is_login = request.session.get('is_login', None)
@@ -465,9 +465,9 @@ def user_management(request):
                 res['user_lists'] = user_lists
             return render(request, 'user_management.html', res)
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "user_management"})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'page': "user_management"})
 
 # 用户删除
 @csrf_exempt
@@ -502,8 +502,8 @@ def user_approval(request):
                 pass
             return render(request, 'user_approval.html', {'user_undefined': user_list})
         else:
-            return render(request, 'login.html')
-    return render(request, 'login.html')
+            return render(request, 'login.html', {'page': "user_approval"})
+    return render(request, 'login.html', {'page': "user_approval"})
 
 @csrf_exempt
 def agree_user(request):
