@@ -1,0 +1,365 @@
+#header{
+    line-height:  24px;
+    padding:11px 0px 11px 0px;
+    height: 24px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    mid-width: 1000px;
+    z-index: 2001;
+}
+
+#head-left{
+    float: left;
+}
+
+
+#head-right{
+    float: left;
+    position: absolute;
+    top: 10ps;
+    right: 5px;
+    font-size: 12px;
+}
+
+.search { position:relative; width: 462px; }
+.search .searchText { border: 1px solid #ddd; width: 346px; line-height: 32px; height: 32px; padding: 0 5px; color: #333; }
+.search .searchButton { position:absolute; right:50px; background: url(../images/sliced.gif) -251px 0 no-repeat; width: 80px; height: 32px; text-indent: -9999px; border:none; }
+
+
+.title{
+    width: 1250px;
+    hight: 20px;
+    padding: 20px;
+    text-align:center;
+    font-style:italic;
+    font-weight: bold;
+    font-size: 40px ;
+    font-family: 隶书;
+}
+.container{
+    width: 600px;
+    height: 200px;
+    background: cornflowerblue;
+}
+
+.head-left-style{
+    color:black;
+    font-size:13px;
+    text-decoration:none;
+    margin-left: 20px;
+    float: left;
+}
+
+.head-left-style:hover{
+    color: #fd6853;
+}
+
+.span-style{
+    color: #ff5a34;
+    font-size: 13px;
+    font-weight: 1000;
+    display: block;
+    margin-left:20px;
+    float: left;
+}
+
+.more-down{
+    display: inline-block;
+    position: relative;
+}
+
+.more-down-class{
+    display: none;
+    border-width: 1px;
+    border-style: ridge;
+    position: absolute;
+    left: 2px;
+    top: 26px;
+    opacity: 1;
+}
+
+.more-down-class a{
+    display: block;
+    line-height: 29px;
+    width: 60px;
+    background: #fff;
+    font-size: 13px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+}
+
+.more-down-class a:hover{
+    background: #6d4ee4;
+    color: #fff;
+}
+
+.local-weather{
+    float: left;
+    position: relative;
+}
+
+.weather-city{
+    font-size: 12px;
+}
+
+.local-weather i{
+    margin: 0px;
+    position: relative;
+    top: 3px;
+}
+
+.weather-quality{
+    color: #61bd82;
+    font-weight: 700;
+}
+
+.spilt-line{
+    float: left;
+    width: 1px;
+    height: 14px;
+    overflow: hidden;
+    background: #e7e7e7;
+    margin: 5px 20px 0;
+    clear: none;
+    border: 0;
+}
+
+.user-enter{
+    float: left;
+}
+
+.user-enter a{
+    margin-right: 17px;
+    text-decoration:none;
+    vertical-align: top;
+    color: rgba(0,0,0,.75);;
+}
+
+.user-enter .change_orange{
+    float: left;
+}
+
+.change-orange:hover{
+    color:orange;
+}
+
+.user-enter .change-orange-set{
+    margin-right: 17px;
+    text-decoration: none;
+    vertical-align: top;
+    color: rgba(0,0,0,.75);
+}
+
+.change-orange-set:hover{
+    color:orange;
+}
+
+.set-down{
+    display: inline-block;
+    position: relative;
+}
+
+.set-down-class{
+    display: none;
+    border-width: 1px;
+    border-style: ridge;
+    position: absolute;
+    left: -21px;
+    top: 40px;
+    opacity: 0;
+}
+
+.set-down:hover .set-down-class{
+    display: block;
+    top: 30px;
+    opacity: 1;
+}
+
+.set-down-class a{
+    display: block;
+    text-align: left;
+    width: 59px;
+    margin: 0px;
+    height: 28px;
+    padding-left: 11px;
+    transition: none .25s;
+}
+
+.change-white:hover{
+    background: #fd6853;
+    color: #fff;
+}
+
+.ico-san{
+    width: 10px;
+    height: 5px;
+    position: absolute;
+    top: -5px;
+    left: 29px;
+    background: url(https://www.sogou.com/web/index/images/ico_spy.png) 0 -295px no-repeat;
+}
+
+.enter{
+    display: inline-block;
+    height: 24px;
+    background: #fd6853;
+    color: #fff;
+    padding: 0 10px;
+    margin-right: 20px;
+}
+
+.enter:hover{
+    box-shadow: 0px 0px 5px 0px #fd6853;
+    color: #fff;
+    background: #f8644f;
+}
+
+.content{
+    position:relative;
+    /*height: 249.81px;*/
+    height: 150px;
+}
+
+.logo{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -180px;
+    text-align: center;
+}
+
+.search-box{
+    margin: 0 auto;
+    height: 44px;
+    width: 624px;
+    position: relative;
+    top: 30px;
+}
+
+.search-text{
+    width: 499px;
+    font-size:18px;
+    height: 22px;
+    padding: 10px 40px 10px 10px;
+}
+
+.search-text:hover{
+    border: 1px solid;
+}
+
+.search-text:focus{
+    border-color:orange;
+    outline: none;
+    border: 1px solid orange;
+}
+
+.click-search{
+    position: absolute;
+    right: 0px;
+    width: 74px;
+    height: 46px;
+    background: #1d9ce5 url(/static/img/search_16.png) 29px 15px no-repeat;
+    border: none;
+    outline: none;
+}
+
+.click-search:hover{
+    outline: none;
+    background: #ff7967 url(/static/img/search_16.png) 29px 12px no-repeat;
+}
+
+.click-search:active{
+    outline: none;
+    background: #ef6b59 url(/static/img/search_16.png) 29px 12px no-repeat;
+}
+
+.yuyin{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 11px;
+    right: 87px;
+    background: url(https://www.sogou.com/web/img/voice/index/ico_fy.png) 5px 1px no-repeat;
+}
+
+.footer{
+    line-height: 22px;
+    text-align: center;
+    width: 640px;
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 53px;
+    left: 50%;
+    margin-left: -315px;
+}
+
+.erwm-box{
+    width: 166px;
+    height: 62px;
+    padding: 10px 0;
+    float: left;
+    top: 1px;
+    border-right: 1px solid #d3cbcb;
+}
+
+.ewm{
+    float: left;
+    margin-right: 10px;
+    width: 62px;
+    height: 62px;
+    background-image: url(https://www.sogou.com/web/index/images/erweima.png);
+    background-repeat: no-repeat;
+}
+
+.footer .erwm-box p{
+    padding-top: 10px;
+    text-align: left;
+    line-height: 20px;
+    font-weight: 700;
+    color: rgba(0,0,0,.7);
+    float: left;
+    margin: 0px;
+}
+
+.footer .erwm-box .p2{
+    color: rgba(0,0,0,.5);
+    padding: 0px;
+    line-height: 20px;
+}
+
+.wz-info{
+    width: 450px;
+    padding-left: 18px;
+    text-align: left;
+    float: left;
+    position: relative;
+    top: -4px;
+}
+
+.footer .wz-info a{
+    text-decoration: none;
+    color: rgba(0,0,0,.7);
+}
+
+.footer .wz-info a:hover{
+    color:black;
+}
+
+.footer .wz-info .line{
+    width: 1px;
+    height: 12px;
+    margin: 5px 10px 0px 10px;
+    background: #e4e4e4;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+}
+
+.footer .wz-info .g{
+    color: rgba(0,0,0,.5);
+}

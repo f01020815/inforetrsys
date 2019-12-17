@@ -1,0 +1,374 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>InfoRetrSys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+    <!-- The styles -->
+    <link href="/static/css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="/static/css/charisma-app.css" rel="stylesheet">
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='/static/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='/static/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='/static/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='/static/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='/static/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='/static/css/uploadify.css' rel='stylesheet'>
+    <link href='/static/css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="/static/bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/static/img/logo1.ico">
+
+</head>
+
+<body style="">
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+	<i>
+	<img  src="/static/img/boc_logo_small.png" width="156" height="47" align="left"/>
+	</i>
+
+
+        <div class="navbar-inner">
+
+            <a class="navbar-brand" href="/index">
+                <span>InfoRetrSys</span></a>
+
+
+
+            <!-- theme selector starts -->
+
+
+
+            <!-- 开头搜索框 -->
+    <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+        <li>
+            <form method='post' action="/show/" name='form1' class="navbar-search pull-left">
+                {% csrf_token %}
+                <input placeholder="Search" class="search-query form-control col-md-10" name="search-text" type="text">
+            </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="dropdown">
+            <a class="btn btn-success" onclick="document:form1.submit()">
+            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                搜索
+            </a>
+        </li>
+    </li>
+
+    </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+
+
+        <!-- left menu start -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+{#                        <li class="nav-header">list</li>#}
+
+                        <li><a class="ajax-link" href="/show"><i class="glyphicon glyphicon-align-justify"></i><span> 查询结果</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="/insert"><i class="glyphicon glyphicon-edit"></i><span> 插入数据</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="/feedback"><i class="glyphicon glyphicon-comment"></i><span> 反馈意见</span></a>
+                        </li>
+
+                        <li class="active"><a class="ajax-link" href="/rollback"><i class="glyphicon glyphicon-list"></i><span> 回退条目</span></a>
+                        </li>
+
+
+                    </ul>
+
+				</div>
+            </div>
+        </div>
+        <!-- left menu ends -->
+
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/show.html">Home</a>
+            </li>
+            <li>
+                <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/approval.html">撤销</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+    <div class="box col-md-12">
+    <div class="box-inner">
+
+
+    </div>
+    </div>
+    <!--/span-->
+
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-list-alt"></i>可撤回条目</h2>
+
+                    <div class="box-icon">
+                        <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                      {% if approval_list_add_del == '' and approval_list_update == '' %}
+                                    <p>当前无可撤回条目</p>
+                                {% else %}
+                                    <table class="table table-striped table-bordered responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>类型</th>
+                                            <th>连接类型</th>
+                                            <th>交易描述</th>
+                                            <th>交易类型</th>
+                                            <th>交易路径</th>
+                                            <th>备注说明</th>
+                                            <th style="width:6%">文档</th>
+                                            <th>更新时间</th>
+                                            <th>提交人</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    {% for i in approval_list_add_del %}
+                                            <tr>
+                                            <td>{{ i.0 }}</td>
+                                            <td>{{ i.1 }}</td>
+                                            <td>{{ i.2 }}</td>
+                                            <td>{{ i.3 }}</td>
+                                            <td>{{ i.4 }}</td>
+                                            <td>{{ i.5 }}</td>
+                                            <td >
+
+                                                {% autoescape off %}
+                                                    {{ i.6 }}
+                                                {% endautoescape %}
+
+                                            </td>
+                                            <td>{{ i.7|date:"Y-m-d H:i:s"  }}</td>
+                                            <td>{{ i.8 }}</td>
+                                            <td style="width: 60px;" align="center" >
+{#                                                <button onclick="agree(event,'{{ i.0 }}','{{ i.8 }}','{{ i.9 }}')";>同意</button>#}
+{#                                                <button onclick="reject(event,'{{ i.0 }}','{{ i.8 }}','{{ i.9 }}')";>不同意</button>#}
+                                                <!--<a class="btn btn-success glyphicon glyphicon-ok" onclick="agree(event,'{{ i.0 }}','{{ i.9 }}','{{ i.10 }}')";></a>-->
+                                                <a class="btn btn-danger glyphicon glyphicon-remove"onclick="reject(event,'{{ i.0 }}','{{ i.9 }}','{{ i.10 }}')";></a>
+
+                                            </td>
+                                            </tr>
+                                    {% endfor %}
+
+                                            <tr bgcolor="#87CEEB">
+                                            <td colspan="10" height="10"></td>
+                                            </tr>
+                                    {% for i in approval_list_update %}
+                                            <tr>
+                                            <td>{{ i.0 }}</td>
+                                            <td>{{ i.1 }}</td>
+                                            <td>{{ i.2 }}</td>
+                                            <td>{{ i.3 }}</td>
+                                            <td>{{ i.4 }}</td>
+                                            <td>{{ i.5 }}</td>
+                                            <td >
+
+                                                {% autoescape off %}
+                                                    {{ i.6 }}
+                                                {% endautoescape %}
+
+                                            </td>
+                                            <td>{{ i.7|date:"Y-m-d H:i:s"  }}</td>
+                                            <td>{{ i.8 }}</td>
+
+                                                {% if i.0 == '修改' %}
+                                                <td style="width: 60px;" align="center" rowspan="2">
+{#                                                <button onclick="re_agree(event,'{{ i.0 }}','{{ i.8 }}','{{ i.9 }}')";>同意</button>#}
+{#                                                <button onclick="re_reject(event,'{{ i.0 }}','{{ i.8 }}','{{ i.9 }}')";>不同意</button>#}
+                                                <!--<a class="btn btn-success glyphicon glyphicon-ok" onclick="re_agree(event,'{{ i.0 }}','{{ i.9 }}','{{ i.10 }}')";></a>-->
+                                                <a class="btn btn-danger glyphicon glyphicon-remove"onclick="re_reject(event,'{{ i.0 }}','{{ i.9 }}','{{ i.10 }}')";></a>
+                                                 </td>
+                                                {% endif %}
+
+
+
+
+                                            </tr>
+                                         {% if i.0 == '更新' %}
+                                            <tr bgcolor="#87CEEB">
+                                            <td colspan="10" height="10"></td>
+                                            </tr>
+                                         {% endif %}
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                    </table>
+                                {% endif %}
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+
+    </div><!--/row-->
+
+
+
+
+
+
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+    <!-- Ad, you can remove it -->
+
+    <!-- Ad ends -->
+
+    <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!-- external javascript -->
+
+{#<script src="./head_left__files/bootstrap.min.js.下载"></script>#}
+
+<!-- library for cookie management -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="/static/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='/static/bower_components/moment/min/moment.min.js'></script>
+<script src='/static/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='/static/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="/static/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="/static/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="/static/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="/static/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="/static/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="/static/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="/static/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="/static/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="/static/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="/static/js/charisma.js"></script>
+
+
+<script src="/static/js/jquery-3.4.0.js"></script>
+<script>
+    //单行撤销
+    function reject(event,opt,path_id_old,approval_id){
+        console.log(opt,path_id_old,approval_id);
+        var obj = event.srcElement
+        var user = "usr"
+        obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);
+         $.ajax({
+            url:"/reject/",
+            type:'POST',
+            data:{opt:opt,path_id_old:path_id_old,approval_id:approval_id,user:user},
+            success: function (arg) {
+                $(function () {       window.alert("撤销成功！");   });
+            }
+            });
+    }
+
+
+    //多行撤销
+    function re_reject(event,opt,path_id_old,approval_id){
+        var obj = event.srcElement
+        var user = "usr";
+        obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode.previousSibling.previousSibling);
+        obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode.nextSibling.nextSibling);
+        obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);
+         $.ajax({
+            url:"/reject/",
+            type:'POST',
+            data:{opt:opt,path_id_old:path_id_old,approval_id:approval_id,user:user},
+            success: function (arg) {
+                $(function () {       window.alert("撤销成功！");   });
+            }
+            });
+    }
+
+
+</script>
+
+
+</body>
+</html>

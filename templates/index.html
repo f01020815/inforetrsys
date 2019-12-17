@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高等级事件检索系统</title>
+
+{#    <link rel="stylesheet" type="text/css" href="/static/Css/templatemo_style.css">#}
+    <link rel="stylesheet" href="/static/css/style_custom.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/adminia.css" />
+    <link rel="shortcut icon" href="/static/img/logo1.ico">
+
+
+
+</head>
+
+
+<body>
+    <div id="header">
+        <div>
+            <a href="/insert" class="head-left-style">插入</a>
+            <a href="/feedback" class="head-left-style">问题反馈</a>
+            <a href="/admingo" class="head-left-style">管理员</a>
+        </div>
+
+        <div id="head-right">
+            <span class="spilt-line"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+                <h1 class="title">BOC高等级事件检索系统.</h1>
+    </div>
+
+    <div class="content">
+        <div class="logo">
+            <img src="/static/img/boc_logo1.png"
+            width="300" height="80">
+        </div>
+    </div>
+    <div class="search-box">
+        <form action="/show/" method="post">
+        <input type="text" name="search-text" class="search-text" placeholder="输入关键字">
+        <input type="submit" class="click-search" value="" style="cursor:pointer">
+
+            {% csrf_token %}
+        </form>
+    </div>
+
+</body>
+</html>

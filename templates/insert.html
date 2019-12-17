@@ -1,0 +1,276 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InfoRetrSys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+    <!-- The styles -->
+    <link href="/static/css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="/static/css/charisma-app.css" rel="stylesheet">
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='/static/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='/static/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='/static/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='/static/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='/static/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/static/css/uploadify.css' rel='stylesheet'>
+    <link href=/static/css/animate.min.css rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="/static/bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/static/img/logo1.ico">
+
+</head>
+
+<body style="">
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+			<i>
+			<img  src="/static/img/boc_logo_small.png" width="156" height="47" align="left"/>
+			</i>
+
+            <a class="navbar-brand" href="/index">
+                <span>InfoRetrSys</span></a>
+
+
+            <!-- theme selector starts -->
+            
+            
+
+    <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+        <li>
+            <form method='post' action="/show/" name='form1' class="navbar-search pull-left">
+                {% csrf_token %}
+                <input placeholder="Search" class="search-query form-control col-md-10" name="search-text" type="text">
+            </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="dropdown">
+            <a class="btn btn-success" onclick="document:form1.submit()">
+            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                搜索
+            </a>
+        </li>
+
+
+    </ul>
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+{#                        <li class="nav-header">list</li>#}
+						
+                        <li><a class="ajax-link" href="/show"><i class="glyphicon glyphicon-align-justify"></i><span> 查询结果</span></a></li>
+						
+                        <li class="active"><a class="ajax-link" href="/insert"><i class="glyphicon glyphicon-edit"></i><span> 插入数据</span></a>
+                        </li>
+                        
+                        
+                        
+                      
+                        <!-- <li class="accordion"> -->
+                            <!-- <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/show.html#"><i class="glyphicon glyphicon-user"></i><span>管理员</span></a> -->
+                            <!-- <ul class="nav nav-pills nav-stacked" style="display: none;"> -->
+                                <!-- <li><a href="approval.html">审批</a></li> -->
+                                <!-- <li><a href="admingo.html">批量上传</a></li> -->
+								<!-- <li><a href="feedback_show.html">反馈结果表</a></li> -->
+                            <!-- </ul> -->
+                        <!-- </li> -->
+                        <li><a class="ajax-link" href="/feedback"><i class="glyphicon glyphicon-comment"></i><span> 反馈意见</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="/rollback"><i class="glyphicon glyphicon-list"></i><span> 回退条目</span></a>
+                        </li>
+                        
+                        
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/show.html">Home</a>
+            </li>
+            <li>
+                <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/insert.html">插入</a>
+            </li>
+        </ul>
+    </div>
+
+    
+
+    
+
+    
+
+    <!--/row-->
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                            <div class="box-content">
+								<form method="POST" role="form"  action="/insert/" enctype="multipart/form-data">
+                                    {% csrf_token %}
+									<div class="form-group">
+										<label for="exampleInputEmail1">请输入连接类型</label>
+										<input type="text" name="line_type" class="form-control" placeholder="请输入连接类型" value="{{ line_type }}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">请输入交易描述</label>
+										<textarea type="text" name="content" class="form-control" placeholder="请输入交易描述" >{{ content }}</textarea>
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">请输入交易类型</label>
+										<input type="text" name="trade_type" class="form-control" placeholder="请输入交易类型" value="{{ trade_type }}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">请输入交易路径</label>
+										<input type="text" name="trade_path" class="form-control"  placeholder="BOCTS->RCPS->IPS->BANCS" required="required" value="{{ trade_path }}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">请输入备注说明</label>
+										<textarea type="text" name="remark" class="form-control" placeholder="请输入备注说明">{{ remark }}</textarea>
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputFile">附加高等级事件文档，只能上传docx格式</label>
+										<input type="file"  name="file123" id="exampleInputFile" multiple accept=".docx" />
+
+									</div>
+                                    <input type="submit" class="btn btn-primary" value="提交">
+									<!--<button type="submit" class="btn btn-default">Submit</button>-->
+								</form>
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+    <!-- Ad, you can remove it -->
+    <div class="row">
+        
+        
+
+    </div>
+    <!-- Ad ends -->
+
+    <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/table.html#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+  {% if messages %}
+    <script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+<!-- external javascript -->
+
+{#<script src="./head_left__files/bootstrap.min.js.下载"></script>#}
+
+<!-- library for cookie management -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="/static/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='/static/bower_components/moment/min/moment.min.js'></script>
+<script src='/static/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='/static/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="/static/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="/static/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="/static/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="/static/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="/static/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="/static/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="/static/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="/static/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="/static/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="/static/js/charisma.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>InfoRetrSys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Muhammad Usman">
+
+    <!-- The styles -->
+    <link href="/static/css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="/static/css/charisma-app.css" rel="stylesheet">
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='/static/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='/static/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='/static/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='/static/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='/static/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='/static/css/uploadify.css' rel='stylesheet'>
+    <link href='/static/css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="/static/bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/static/img/logo1.ico">
+<script>
+      //隐藏筛选条件
+<!--    $(function () {
+        $("input").change(function () {
+            var val = $(this).val();
+            if (!val) {
+                $("tr").slideDown();
+                return;
+            }
+            var $showOl = $("tr:contains(" + val + ")")
+            $("tr").not($showOl).slideUp();
+            $showOl.slideDown();
+        }).keyup(function () {
+            $(this).change();
+        });
+    });
+-->
+    {#function log_submit(word_user,word_level,word_action){#}
+    {#    console.log(word_user,word_level,word_action);#}
+        {#var obj = event.srcElement#}
+    {#    var word_user = $('#log').val()#}
+    {#    console.log(word_user);#}
+    {##}
+    {#    $.ajax({#}
+    {#        url:"/log_filter/",#}
+    {#        type:'POST',#}
+    {#        data:{word_user:word_user,word_level:word_level,word_action:word_action},#}
+    {#        });#}
+    //条件筛选
+    function log_filter(word_user,word_level,word_action){
+        console.log(word_user,word_level,word_action);
+         $.ajax({
+            url:"/log_filter/",
+            type:'POST',
+            data:{word_user:word_user,word_level:word_level,word_action:word_action},
+            });
+    }
+
+{#function onChanges() {#}
+{##}
+{#		//每次获取数据前先清空div#}
+{#		$("#showList").empty();#}
+{#		//获取select选中的值#}
+{#		var housecode = $("#searchHousecode").val();#}
+{#		//进行判断 不为空进行ajax请求 否则提示没有输入#}
+{#		if (housecode != null && housecode.trim() != "") {#}
+{#		$.ajax({#}
+{#		    type : "post",#}
+{#		    data:"housecode="+housecode,#}
+{#		    url : "HouseRepairController_listPage",#}
+{#		    success : function(data) {#}
+{#		    	//把返回的数据使用each进行遍历读取#}
+{#		    	$.each(data, function(i,n){#}
+{#		    		//获得div的id并把需要显示的值追加到div中#}
+{#		    		$("#showList").append("<div class='repaitList'><ul><li><abbr>"+n.name+#}
+{#		    				"</abbr><span class='borderRadius5 repaitListSpan1'>"#}
+{#		    				+n.STATUS+"</span></li><li class='oneEllipis'>"+n.factory_name+#}
+{#		    				"</li></ul><ul><li class='borderRadius300 btnOKColor' id='sure' name="#}
+{#		    				+n.goods_code+" οnclick='RepairEdit(this)'>报修</li></ul></div>")#}
+{#		    	})	}#}
+{#		    });#}
+{#		} else {#}
+{#			alert("房间号不为空 !");#}
+{#		}#}
+{#	}#}
+
+    {#$(function () {#}
+    {#    $("select").change(function () {#}
+    {#        console.log("select")#}
+    {#        var val = $(this).val();#}
+    {#        if (!val) {#}
+    {#            $("tr").slideDown();#}
+    {#            return;#}
+    {#        }#}
+    {#        var $showOl = $("tr:contains(" + val + ")")#}
+    {#        $("tr").not($showOl).slideUp();#}
+    {#        $showOl.slideDown();#}
+    {#    }).keyup(function () {#}
+    {#        $(this).change();#}
+    {#    });#}
+    {# }); #}
+
+</script>
+</head>
+
+<body style="">
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+
+			<i>
+			<img  src="/static/img/boc_logo_small.png" width="156" height="47" align="left"/>
+			</i>
+
+			<a class="navbar-brand" href="file:///E:/html/html%E6%A8%A1%E6%9D%BF/custom/%E4%BF%AE%E6%94%B9%E5%90%8Ehtml/index.html">
+                <span>InfoRetrSys</span></a>
+
+            <!-- theme selector starts -->
+
+
+
+                 <!-- 开头搜索框 -->
+    <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+        <li>
+            <form method='post' action="/show/" name='form1' class="navbar-search pull-left">
+                {% csrf_token %}
+                <input placeholder="Search" class="search-query form-control col-md-10" name="search-text" type="text">
+            </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="dropdown">
+            <a class="btn btn-success" onclick="document:form1.submit()">
+            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                搜索
+            </a>
+        </li>
+    </li>
+
+    </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">list</li>
+
+                        <li class="accordion">
+                            <a href="###"><i class="glyphicon glyphicon-user"></i><span>日常操作管理</span></a>
+                            <ul class="nav nav-pills nav-stacked" style="display: none;">
+                                <li><a href="/approval">审批</a></li>
+                                <li><a href="/admingo">批量上传</a></li>
+								<li><a href="/feedback_show">反馈结果表</a></li>
+								<li class="active"><a href="/log_show">日志展示</a></li>
+                                <li><a href="/maintenance">功能维护</a></li>
+
+                            </ul>
+                            <a href="###"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a>
+                            <ul class="nav nav-pills nav-stacked" style="display: none;">
+                                <li><a href="/register">用户创建</a></li>
+                                <li><a href="/user_management">用户管理</a></li>
+                                <li><a href="/user_approval">用户审批</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/index">Home</a>
+            </li>
+            <li>
+                <a href="/log_show">Log</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+    <!--/row-->
+
+    <!--show主显示内容跟/row-->
+{#    <!--筛选框 -->#}
+{#                <div class="control-group">#}
+{#                    <label class="control-label" for="selectError">开始时间</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#                    <label class="control-label" for="selectError">结束时间</label>#}
+{##}
+{#                    <div class="controls">#}
+{#                        <select id="selectError" data-rel="chosen">#}
+{#                            <option>Option 1</option>#}
+{#                            <option>Option 2</option>#}
+{#                            <option>Option 3</option>#}
+{#                            <option>Option 4</option>#}
+{#                            <option>Option 5</option>#}
+{#                        </select>#}
+{##}
+{#                    <div class="controls">#}
+{#                        <input  id="start_time" action="" type="date" name="starttime" class="form-control" value="" style="width:14%; float: left"/>#}
+{##}
+{#                        <input id="end_time" action="" type="date" name="endtime" class="form-control" value="" style="width:14%"/><br>#}
+{##}
+{#                        <input id="key_word" type="text" class="form-control" data-rel="input" placeholder="请输入关键字" style="width:20%"/>#}
+{##}
+{#                    </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+
+
+
+
+                <div class="control-group">
+                    <label class="control-label" for="selectError1">Multiple Select</label>
+
+                    <div class="controls">
+                        <form  method='post' action="/log_filter/" name='filter_form' enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                                        <!--筛选框 -->
+                            <div class="control-group">
+                                <label class="control-label" for="selectError">开始时间</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <label class="control-label" for="selectError">结束时间</label>
+
+                                <div class="controls">
+            {#                        <select id="selectError" data-rel="chosen">#}
+            {#                            <option>Option 1</option>#}
+            {#                            <option>Option 2</option>#}
+            {#                            <option>Option 3</option>#}
+            {#                            <option>Option 4</option>#}
+            {#                            <option>Option 5</option>#}
+            {#                        </select>#}
+
+                                <div class="controls">
+                                    <input  id="start_time" action="" type="date" name="starttime" class="form-control" value="" style="width:14%; float: left"/>
+                                    <input id="end_time" action="" type="date" name="endtime" class="form-control" value="" style="width:14%"/><br>
+                                </div>
+                                </div>
+                            </div>
+                        <select id="log1" name="word_level" class="form-control" data-rel="chosen" style="width:15%">
+                            <option></option>
+                            <option value="<INFO>">INFO</option>
+                            <option value="<DEBUG>">DEBUG</option>
+                        </select>
+                        <select id="log2" name="word_action" class="form-control" data-rel="chosen" style="width:15%">
+                            <option></option>
+                            <option value="操作:查询;">查询</option>
+                            <option value="操作:意见增加;">意见增加</option>
+                            <option value="操作:增加;">增加</option>
+                            <option value="操作:拒绝修改;">拒绝修改</option>
+                            <option value="操作:重复;">重复</option>
+
+                        </select>
+                        <select id="log3"  name="word_user" class="form-control" data-rel="chosen" style="width:15%">
+                            <option></option>
+                            <option>user1</option>
+                            <option>user2</option>
+                            <option>user3</option>
+                        </select>
+                            <input type="submit" value="筛选" class="btn btn-default btn-sm">
+{#                            <a class="btn btn-success glyphicon glyphicon-ok" onclick="log_submit(event,'{{ word_level }}','{{ word_action }}','{{ word_user }}')"></a>#}
+                        </form>
+                    </div>
+                </div>
+
+
+        <!--筛选框-end -->
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>日志显示</h2>
+{#                    <select>#}
+{#                        <option>时间</option>#}
+{#                    </select>#}
+                </div>
+                <div class="box-content">
+                    <table class="table table-bordered table-striped table-condensed">
+                    {% if log_data == 'null' %}
+                    <p>查询无结果</p>
+                    {% else %}
+                        <thead>
+						<tr>
+							<th>序号</th>
+                            <th>时间</th>
+                            <th>级别</th>
+                            <th>用户</th>
+                            <th>动作</th>
+                            <th>关键字</th>
+                            <th>统计与id</th>
+						</tr>
+                        </thead>
+
+                        <tbody>
+                            {% for i in log_data %}
+                                <tr id="log_event">
+                                <td>{{ forloop.counter }}</td>
+                                <td class="words">{{ i.0 }}</td>
+                                <td class="words">{{ i.1 }}</td>
+                                <td class="words">{{ i.2 }}</td>
+                                <td class="words">{{ i.3 }}</td>
+                                <td class="words">{{ i.4 }}</td>
+                                <td class="words">{{ i.5 }}</td>
+
+
+                                </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+                    <!--翻页写在这里-->
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+        </div>
+    </div>
+
+
+
+
+<!-- library for cookie management -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="/static/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='/static/bower_components/moment/min/moment.min.js'></script>
+<script src='/static/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='/static/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="/static/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="/static/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="/static/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="/static/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="/static/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="/static/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="/static/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="/static/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="/static/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="/static/js/charisma.js"></script>
+
+
+
+</body>
+</html>

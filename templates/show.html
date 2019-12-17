@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InfoRetrSys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Muhammad Usman">
+    <!-- The styles -->
+    <link href="/static/css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <link href="/static/css/charisma-app.css" rel="stylesheet">
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='/static/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='/static/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='/static/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='/static/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='/static/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='/static/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='/static/css/uploadify.css' rel='stylesheet'>
+    <link href='/static/css/animate.min.css' rel='stylesheet'>
+    <!-- jQuery -->
+    <script src="/static/bower_components/jquery/jquery.min.js"></script>
+    <script>
+
+    //将查询关键字替换为红色
+    window.onload=function (){
+        var List={{ get_names_words | safe }};
+        for (var i = List.length - 1; i >= 0; i--) {
+            var ot = document.getElementsByClassName("words");
+            for (var j = 0; j < ot.length; j++) {
+                 var str = document.getElementsByClassName("words")[j].innerHTML;
+                reg = new RegExp(List[i], 'igm');
+                var txt = str.replace(reg, "<b style=color:red>" + List[i] + "</b>");
+                document.getElementsByClassName("words")[j].innerHTML = txt;
+            }
+        }
+    }
+
+
+    function del(event,chuanzhi) {
+        var path_id = chuanzhi;
+        var obj = event.srcElement;
+        var truthBeTold = window.confirm("确认是否删除")
+
+        if (truthBeTold) {
+
+            {#obj.parentNode.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode.parentNode);#}
+            //传值
+
+            $.ajax({
+            url:"/deletepathid/",
+            type:'POST',
+            data : {path_id:path_id} ,
+            async:false,
+            success:function (arg) {
+             console.log(arg);
+                if(arg == 0){
+                    window.alert("删除成功！")
+                    obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);
+                }
+                else if(arg == 5){
+                    window.alert("条目审批中，暂时无法操作！")
+                }
+            //$(function () {       window.alert("删除成功！");   });
+            }
+            });
+
+        } else
+            return false;
+    }
+
+$(function(){
+         var $table=$('table');//获取表格对象
+         var currentPage=0;//设置当前页默认值为0
+         var pageSize=5;//设置每一页要显示的数目
+         $table.bind('paging', function () {
+             $table.find('tbody tr').hide().slice(currentPage*pageSize,(currentPage+1)*pageSize).show();
+         //先将tbody中所有的行隐藏，再通过slice结合当前页数和页面显示的数目展现数据
+         });
+         var sumRows=$table.find('tbody tr').length;//获取数据总行数
+         var sumPages=Math.ceil(sumRows/pageSize);//得到总页数
+         var $pager=$('<div class="page"></div>');
+         for(var pageIndex=0;pageIndex<sumPages;pageIndex++){
+            $('<a href="#"><span>'+(pageIndex+1)+'</span></a>').bind("click",{"newPage":pageIndex},function(event){
+                 currentPage=event.data["newPage"];
+                 $table.trigger("paging");
+                //为每一个要显示的页数上添加触发分页函数
+             }).appendTo($pager);
+             $pager.append(" ");
+         }
+         $pager.insertAfter($table);
+         $table.trigger("paging");
+     });
+
+
+    </script>
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/static/img/logo1.ico">
+
+    <!--{#  custom_head  #}-->
+    <!--<link href="/static/css/style_custom_head.css" rel="stylesheet" />-->
+    <!--<link href="/static/css/style_custom_head1.css" rel="stylesheet" />-->
+
+
+{#    <script src="/static/js/jquery-3.4.0.js"></script>#}
+{#    <script type="text/javascript">#}
+{#        //将查询关键字替换为红色#}
+{#    window.onload=function (){#}
+{#        var List={{ get_names_words | safe }};#}
+{#        for (var i = List.length - 1; i >= 0; i--) {#}
+{#            var ot = document.getElementsByClassName("words");#}
+{#            for (var j = 0; j < ot.length; j++) {#}
+{#                 var str = document.getElementsByClassName("words")[j].innerHTML;#}
+{#                reg = new RegExp(List[i], 'igm');#}
+{#                var txt = str.replace(reg, "<b style=color:red>" + List[i] + "</b>");#}
+{#                document.getElementsByClassName("words")[j].innerHTML = txt;#}
+{#            }#}
+{#        }#}
+{#    }#}
+
+{#    //ajax传值，将要删除的path_id传给后台#}
+{#    function del(event,self) {#}
+{#        var path_id = self.value;#}
+{#        var obj = event.srcElement;#}
+{#        var truthBeTold = window.confirm("确认是否删除")#}
+{#        if (truthBeTold) {#}
+{#            obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);#}
+{#            //传值#}
+{#            console.log(path_id);#}
+{#            $.ajax({#}
+{#            url:"/deletepathid/",#}
+{#            type:'POST',#}
+{#            data : {path_id:path_id} ,#}
+{#            async:false,#}
+{#            success:function (arg) {#}
+{#            $(function () {       window.alert("删除成功！");   });#}
+{#            }#}
+{#            });#}
+{##}
+{#        } else#}
+{#            return false;#}
+{#    }#}
+{##}
+{#        </script>#}
+
+
+
+</head>
+
+<body style="">
+    <!-- 开头logo -->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-inner">
+            <i><img  src="/static/img/boc_logo_small.png" width="156" height="47" align="left"/></i>
+            <a class="navbar-brand" href="/index"><span>InfoRetrSys</span></a>
+
+
+
+    <!-- 开头搜索框 -->
+    <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+        <li>
+            <form method='post' name='form1' class="navbar-search pull-left">
+                {% csrf_token %}
+                <input placeholder="Search" class="search-query form-control col-md-10" name="search-text" type="text">
+            </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="dropdown">
+            <a class="btn btn-success" onclick="document:form1.submit()">
+            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                搜索
+            </a>
+        </li>
+
+
+    </ul>
+        </div>
+    </div>
+
+
+
+<div class="ch-container">
+    <div class="row">
+               <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+{#                        <li class="nav-header">list</li>#}
+
+                        <li class="active"><a class="ajax-link" href="/show"><i class="glyphicon glyphicon-align-justify"></i><span> 查询结果</span></a></li>
+
+                        <li><a class="ajax-link" href="/insert"><i class="glyphicon glyphicon-edit"></i><span> 插入数据</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="/feedback"><i class="glyphicon glyphicon-comment"></i><span> 反馈意见</span></a>
+                        </li>
+
+                        <li><a class="ajax-link" href="/rollback"><i class="glyphicon glyphicon-list"></i><span> 回退条目</span></a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!--/span-->
+        <!-- left menu ends -->
+
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/index">Home</a>
+            </li>
+            <li>
+                <a href="/show">结果</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!--show主显示内容跟/row-->
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>结果汇总</h2>
+                </div>
+                <div class="box-content">
+                    <table class="table table-bordered table-striped table-condensed">
+                    {% if shows == 'null' %}
+                    <p>查询无结果</p>
+                    {% else %}
+                        <thead>
+						<tr>
+							<th>序号</th>
+                            <th style="width:7%">连接类型</th>
+                            <th style="width:20%">交易描述</th>
+                            <th style="width:7%">交易类型</th>
+                            <th>交易路径</th>
+                            <th>备注说明</th>
+                            <th style="width:5%">文档</th>
+                            <th>最后更新时间</th>
+                            <th>操作</th>
+						</tr>
+                        </thead>
+
+                        <tbody>
+                            {% for i in shows %}
+                                <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td class="words">{{ i.0 }}</td>
+                                <td class="words">{{ i.1 }}</td>
+                                <td class="words">{{ i.2 }}</td>
+                                <td class="words">{{ i.3 }}</td>
+                                <td class="words">{{ i.4 }}</td>
+                                <td class="words">
+                                    {% autoescape off %}
+                                        {{ i.5 }}
+                                    {% endautoescape %}
+
+                                </td>
+                                <td class="words">{{ i.6|date:"Y-m-d H:i:s"  }}</td>
+                                <td style="width: 50px;" >
+                                    <!--查看-->
+                                    <a class="btn btn-success" href="/update/?path_id={{ i.7 }}" target="_blank" rel="nofollow noopener noreferrer">
+                                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                    </a>
+                                    <!--删除-->
+                                    <!--检查是否为审核中-->
+                                    {% if i.8 < 1 %}
+                                        <span class="label-default label">审批中</span>
+                                    {% else %}
+                                        <a class="btn btn-danger glyphicon glyphicon-trash icon-white" onclick="del(event,chuanzhi={{ i.7 }});">
+                                    {% endif %}
+                                    </a>
+                                <div id="txtHint"></div>
+                                </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+                    <!--翻页写在这里-->
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+        </div>
+    </div>
+ </div>
+ {% if messages %}
+    <script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+{#<script src="./head_left__files/bootstrap.min.js.下载"></script>#}
+
+<!-- library for cookie management -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="/static/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='/static/bower_components/moment/min/moment.min.js'></script>
+<script src='/static/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='/static/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="/static/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="/static/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="/static/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="/static/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="/static/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="/static/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="/static/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="/static/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="/static/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="/static/js/charisma.js"></script>
+
+
+</body>
+</html>

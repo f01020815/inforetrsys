@@ -1,0 +1,11 @@
+.idea
+__pycache__
+TRANSACTION_PATH
+HIGH_LEVEL_EVENT
+EMERGENCY_HANDBOOK
+test
+venv
+LOG
+LOG/*.log
+LOG/all.log
+db.sqlite3
